@@ -6,5 +6,12 @@ public class TicketBookingRequestProcessorTests
     public void ShouldReturnTicketBookingResultWithRequestValues()
     {
         var processor = new TicketBookingRequestProcessor();
+
+        var request = new TicketBookingRequest
+        {
+            FirstName = "Abdul",
+            LastName = "Rahman",
+            Email = "abdulrahman@demo.com"
+        };
     }
 }
