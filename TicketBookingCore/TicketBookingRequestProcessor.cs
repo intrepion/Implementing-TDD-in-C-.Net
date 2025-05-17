@@ -6,12 +6,9 @@ public class TicketBookingRequestProcessor
     {
     }
 
-    public TicketBookingResponse Book(TicketBookingRequest request)
+    public static TicketBookingResponse Book(TicketBookingRequest? request)
     {
-        if (request is null)
-        {
-            throw new ArgumentNullException(nameof(request));
-        }
+        ArgumentNullException.ThrowIfNull(request);
 
         return new TicketBookingResponse
         {
