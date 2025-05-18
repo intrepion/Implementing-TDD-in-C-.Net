@@ -34,7 +34,7 @@ public class TicketBookingRequestProcessorTests
     public void ShouldThrowExceptionIfRequestIsNull()
     {
         // Act  
-        var exception = Assert.Throws<ArgumentNullException>(() => TicketBookingRequestProcessor.Book(null));
+        var exception = Assert.Throws<ArgumentNullException>(() => _processor.Book(null));
 
         // Assert  
         Assert.Equal("request", exception.ParamName);
