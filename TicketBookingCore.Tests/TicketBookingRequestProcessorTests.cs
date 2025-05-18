@@ -45,6 +45,14 @@ public class TicketBookingRequestProcessorTests
     public void ShouldSaveToDatabase()
     {
         // Arrange  
+        TicketBooking savedTicketBooking = null;
+
+        _ticketBookingRepositoryMock.Setup(x => x.Save(It.IsAny<TicketBooking>()))
+            .Callback<TicketBooking>((ticketBooking) =>
+            {
+                savedTicketBooking = ticketBooking;
+            });
+
         var request = new TicketBookingRequest
         {
             FirstName = "Abdul",
@@ -54,5 +62,13 @@ public class TicketBookingRequestProcessorTests
 
         // Act  
         TicketBookingResponse response = _processor.Book(request);
+
+        // Assert  
+        _ticketBookingRepositoryMock.Verify(x => x.Save(It.IsAny<TicketBooking>()), Times.Once);
+
+        Assert.NotNull(savedTicketBooking);
+        Assert.Equal(request.FirstName, savedTicketBooking.FirstName);
+        Assert.Equal(request.LastName, savedTicketBooking.LastName);
+        Assert.Equal(request.Email, savedTicketBooking.Email);
     }
 }
