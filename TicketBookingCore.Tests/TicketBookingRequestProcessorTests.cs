@@ -21,7 +21,7 @@ public class TicketBookingRequestProcessorTests
         };
 
         // Act  
-        TicketBookingResponse response = TicketBookingRequestProcessor.Book(request);
+        TicketBookingResponse response = _processor.Book(request);
 
         // Assert  
         Assert.NotNull(response);
@@ -38,5 +38,20 @@ public class TicketBookingRequestProcessorTests
 
         // Assert  
         Assert.Equal("request", exception.ParamName);
+    }
+
+    [Fact]
+    public void ShouldSaveToDatabase()
+    {
+        // Arrange  
+        var request = new TicketBookingRequest
+        {
+            FirstName = "Abdul",
+            LastName = "Rahman",
+            Email = "abdulrahman@demo.com"
+        };
+
+        // Act  
+        TicketBookingResponse response = _processor.Book(request);
     }
 }

@@ -6,7 +6,7 @@ public class TicketBookingRequestProcessor
     {
     }
 
-    public static TicketBookingResponse Book(TicketBookingRequest? request)
+    public TicketBookingResponse Book(TicketBookingRequest? request)
     {
         ArgumentNullException.ThrowIfNull(request);
 
