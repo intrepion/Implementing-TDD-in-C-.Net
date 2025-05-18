@@ -2,9 +2,9 @@ namespace TicketBookingCore;
 
 public class TicketBookingRequestProcessor
 {
-    public TicketBookingRequestProcessor()
-    {
-    }
+    public TicketBookingRequestProcessor(ITicketBookingRepository ticketBookingRepository)  
+    {  
+    }  
 
     public TicketBookingResponse Book(TicketBookingRequest? request)
     {
